@@ -13,7 +13,11 @@ import os
 lock = Lock()
 
 # coinmarketcap pro api key
-CMC_PRO_API_KEY = os.environ['API_KEY']
+try:
+    CMC_PRO_API_KEY = os.environ['API_KEY']
+except KeyError:
+    print('Error!\nCoinMarketCap API KEY is not set.\nYou neet to set an environment variable API_KEY on the CLI.')
+    sys.exit(1)
 
 # caching API for 2min
 cache = TTLCache(maxsize=1000, ttl=120)
@@ -34,7 +38,7 @@ class CoinClient():
 
     @cached(cache)
     def tickers(self):
-        r = requests.get('%s?id=1,1027,2797&CMC_PRO_API_KEY=%s' % (self.endpoint, CMC_PRO_API_KEY))
+        r = requests.get('%s?id=1,1027,2797&CMC_PRO_API_KEY=%s' % (self.endpoint, CMC_PRO_API_KEY, ))
         return json.loads(r.content.decode('UTF-8'))
 
 class CoinCollector():
@@ -63,7 +67,6 @@ class CoinCollector():
                         if value['quote'][price][that] is not None:
                             metric.add_sample(coinmarketmetric, value=float(value['quote'][price][that]), labels={'id': value['slug'], 'name': value['name'], 'symbol': value['symbol']})
             yield metric
-            #start += len(response['data'])
 
 if __name__ == '__main__':
     try:

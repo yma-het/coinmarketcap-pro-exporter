@@ -12,6 +12,8 @@ rule_files:
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
 scrape_configs:
-  - job_name: 'coinmarketcap'
+  - job_name: 'coinmarketcap-pro-exporter'
+    # Override the global default and scrape targets from this job every 300 seconds, overwise API calls limits have been reached soon.
+    scrape_interval: 300s
     static_configs:
-      - targets: ['coinmarketcap-exporter:9101']
+      - targets: ['coinmarketcap-pro-exporter:9101']

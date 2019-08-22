@@ -10,11 +10,11 @@ https://pro.coinmarketcap.com/signup/
     ```
     docker build -t coinmarketcap-pro-exporter:latest .
 
-    docker run -e API_KEY=[YOUR CoinMarketCap APIKEY] -p 127.0.0.1:9101:9101 coinmarketcap-pro-exporter:latest
+    docker run -e API_KEY=[Your CoinMarketCap APIKEY] -p 127.0.0.1:9101:9101 coinmarketcap-pro-exporter:latest
     ```
     or pull image from docker-hub
     ```
-    docker run -e API_KEY=[YOUR CoinMarketCap APIKEY] -p 9101:9101 naoyain/coinmarketcap-pro-exporter
+    docker run -e API_KEY=[Your CoinMarketCap APIKEY] -p 9101:9101 naoyain/coinmarketcap-pro-exporter
     ```
 # prometheus.yml
 API calls must be every 300 seconds over. 

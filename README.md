@@ -11,8 +11,9 @@ https://pro.coinmarketcap.com/signup/
 [Standards and Conventions](https://pro.coinmarketcap.com/api/v1#section/Standards-and-Conventions)  
 For a current list of supported cryptocurrencies use the `/cryptocurrency/map` API call.
 
-    Example:
-    | Currency |CoinMarketCap ID |
+    Example:  
+
+    | Currency | CoinMarketCap ID |
     |---|---|
     | Bitcoin | 1 |
     | Ethereum | 1027 |

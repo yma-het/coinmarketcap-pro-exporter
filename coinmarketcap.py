@@ -18,6 +18,12 @@ try:
 except KeyError:
     print('Error!\nCoinMarketCap API KEY is not set.\nYou neet to set an environment variable API_KEY on the CLI.')
     sys.exit(1)
+# coinmarketcap pro coin id
+try:
+    CMC_PRO_COIN_ID = os.environ['CoinID']
+except KeyError:
+    print('Error!\nCoinMarketCap Currency ID is not set.\nYou neet to set an environment variable CoinID on the CLI.')
+    sys.exit(1)
 
 # caching API for 2min
 cache = TTLCache(maxsize=1000, ttl=120)
@@ -38,7 +44,7 @@ class CoinClient():
 
     @cached(cache)
     def tickers(self):
-        r = requests.get('%s?id=1,1027,2797&CMC_PRO_API_KEY=%s' % (self.endpoint, CMC_PRO_API_KEY, ))
+        r = requests.get('%s?id=%s&CMC_PRO_API_KEY=%s' % (self.endpoint, CMC_PRO_COIN_ID, CMC_PRO_API_KEY))
         return json.loads(r.content.decode('UTF-8'))
 
 class CoinCollector():
@@ -48,8 +54,6 @@ class CoinCollector():
     def collect(self):
         with lock:
             log.info('collecting...')
-            #start = 1
-            # query the api
             response = self.client.tickers()
             if not response['data']:
                 log.info('HTTP error')

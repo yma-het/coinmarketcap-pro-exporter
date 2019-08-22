@@ -27,4 +27,7 @@ services:
       - ./init.sh:/opt/init.sh
   coinmarketcap-pro-exporter:
     image: naoyain/coinmarketcap-pro-exporter:latest
-
+    environment:
+      - API_KEY=[CoinMarketCap API KEY]
+      - CoinID=[CoinMarketCap currency IDs]
+      # Example: 1,1027,2797

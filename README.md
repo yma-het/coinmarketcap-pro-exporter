@@ -12,12 +12,12 @@ https://pro.coinmarketcap.com/signup/
 For a current list of supported cryptocurrencies use the `/cryptocurrency/map` API call.
 
     Example:
-    |Currency |CoinMarketCap ID |
+    | Currency |CoinMarketCap ID |
     |---|---|
-    |Bitcoin |1 |
-    |Ethereum |1027 |
-    |United States Dollar ($) |2781 |
-    |Japanese Yen (¥) |2797 |
+    | Bitcoin | 1 |
+    | Ethereum | 1027 |
+    | United States Dollar ($) | 2781 |
+    | Japanese Yen (¥) | 2797 |
 
 3. Run docker container while listening on localhost:9100:
     ```

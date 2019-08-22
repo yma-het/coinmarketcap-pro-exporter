@@ -20,7 +20,7 @@ For a current list of supported cryptocurrencies use the `/cryptocurrency/map` A
     | United States Dollar ($) | 2781 |
     | Japanese Yen (¥) | 2797 |
 
-3. Run docker container while listening on localhost:9100:
+3. Run docker container while listening on localhost:9101:
     ```
     docker build -t coinmarketcap-pro-exporter:latest .
 

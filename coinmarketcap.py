@@ -26,7 +26,7 @@ except KeyError:
     sys.exit(1)
 
 # caching API for 2min
-cache = TTLCache(maxsize=1000, ttl=120)
+cache = TTLCache(maxsize=1000, ttl=300)
 
 # logging setup
 log = logging.getLogger('coinmarketcap-exporter')
